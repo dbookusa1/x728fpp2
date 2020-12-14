@@ -143,6 +143,11 @@ GPIO.setup(6, GPIO.IN)
 def my_callback(channel):
     if GPIO.input(6):     # if port 6 == 1
         print "---AC Power Loss OR Power Adapter Failure---"
+ while True:
+    if GPIO.input(6):
+    result = os.popen("sudo shutdown -h now").read()
+    return
+  time.sleep(0.1)
     else:                  # if port 6 != 1
         print "---AC Power OK,Power Adapter OK---"
         
